@@ -1,0 +1,5339 @@
+attributes:
+- description: Vehicle is moving.
+  name: vehicle.moving
+- description: Vehicle, with a driver/rider in/on it, is currently stationary but
+    has an intent to move.
+  name: vehicle.stopped
+- description: Vehicle is stationary (usually for longer duration) with no immediate
+    intent to move.
+  name: vehicle.parked
+- description: There is a rider on the bicycle or motorcycle.
+  name: cycle.with_rider
+- description: There is NO rider on the bicycle or motorcycle.
+  name: cycle.without_rider
+- description: The human is sitting or lying down.
+  name: pedestrian.sitting_lying_down
+- description: The human is standing.
+  name: pedestrian.standing
+- description: The human is moving.
+  name: pedestrian.moving
+categories:
+- description: Adult subcategory.
+  name: human.pedestrian.adult
+- description: Child subcategory.
+  name: human.pedestrian.child
+- description: Wheelchairs. If a person is in the wheelchair, include in the annotation.
+  name: human.pedestrian.wheelchair
+- description: Strollers. If a person is in the stroller, include in the annotation.
+  name: human.pedestrian.stroller
+- description: A small electric or self-propelled vehicle, e.g. skateboard, segway,
+    or scooters, on which the person typically travels in a upright position. Driver
+    and (if applicable) rider should be included in the bounding box along with the
+    vehicle.
+  name: human.pedestrian.personal_mobility
+- description: Police officer.
+  name: human.pedestrian.police_officer
+- description: Construction worker
+  name: human.pedestrian.construction_worker
+- description: All animals, e.g. cats, rats, dogs, deer, birds.
+  name: animal
+- description: 'Vehicle designed primarily for personal use, e.g. sedans, hatch-backs,
+    wagons, vans, mini-vans, SUVs and jeeps. If the vehicle is designed to carry more
+    than 10 people use vehicle.bus. If it is primarily designed to haul cargo use
+    vehicle.truck. '
+  name: vehicle.car
+- description: Gasoline or electric powered 2-wheeled vehicle designed to move rapidly
+    (at the speed of standard cars) on the road surface. This category includes all
+    motorcycles, vespas and scooters.
+  name: vehicle.motorcycle
+- description: Human or electric powered 2-wheeled vehicle designed to travel at lower
+    speeds either on road surface, sidewalks or bike paths.
+  name: vehicle.bicycle
+- description: Bendy bus subcategory. Annotate each section of the bendy bus individually.
+  name: vehicle.bus.bendy
+- description: Rigid bus subcategory.
+  name: vehicle.bus.rigid
+- description: Vehicles primarily designed to haul cargo including pick-ups, lorrys,
+    trucks and semi-tractors. Trailers hauled after a semi-tractor should be labeled
+    as vehicle.trailer
+  name: vehicle.truck
+- description: Vehicles primarily designed for construction. Typically very slow moving
+    or stationary. Cranes and extremities of construction vehicles are only included
+    in annotations if they interfere with traffic. Trucks used to haul rocks or building
+    materials are considered vehicle.truck rather than construction vehicles.
+  name: vehicle.construction
+- description: All types of ambulances.
+  name: vehicle.emergency.ambulance
+- description: All types of police vehicles including police bicycles and motorcycles.
+  name: vehicle.emergency.police
+- description: Any vehicle trailer, both for trucks, cars and bikes.
+  name: vehicle.trailer
+- description: Temporary road barrier placed in the scene in order to redirect traffic.
+    Commonly used at construction sites. This includes concrete barrier, metal barrier
+    and water barrier. No fences.
+  name: movable_object.barrier
+- description: All types of traffic cone.
+  name: movable_object.trafficcone
+- description: Objects that a pedestrian may push or pull. For example dolleys, wheel
+    barrows, garbage-bins, or shopping carts.
+  name: movable_object.pushable_pullable
+- description: Movable object that is left on the driveable surface that is too large
+    to be driven over safely, e.g tree branch, full trash bag etc.
+  name: movable_object.debris
+- description: Area or device intended to park or secure the bicycles in a row. It
+    includes all the bikes parked in it and any empty slots that are intended for
+    parking bikes.
+  name: static_object.bicycle_rack
+client:
+  host: 127.0.0.1
+  port: 2000
+  time_out: 10.0
+dataset:
+  root: ./dataset
+  version: v1.14
+sensors:
+- modality: camera
+  name: CAM_FRONT
+- modality: camera
+  name: CAM_FRONT_RIGHT
+- modality: camera
+  name: CAM_FRONT_LEFT
+- modality: camera
+  name: CAM_BACK_LEFT
+- modality: camera
+  name: CAM_BACK
+- modality: camera
+  name: CAM_BACK_RIGHT
+- modality: radar
+  name: RADAR_FRONT
+- modality: radar
+  name: RADAR_FRONT_RIGHT
+- modality: radar
+  name: RADAR_FRONT_LEFT
+- modality: radar
+  name: RADAR_BACK_RIGHT
+- modality: radar
+  name: RADAR_BACK_LEFT
+- modality: lidar
+  name: LIDAR_TOP
+visibility:
+- description: visibility of whole object is between 0 and 40%
+  level: v0-40
+- description: visibility of whole object is between 40 and 60%
+  level: v40-60
+- description: visibility of whole object is between 60 and 80%
+  level: v60-80
+- description: visibility of whole object is between 80 and 100%
+  level: v80-100
+worlds:
+- captures:
+  - capture_vehicle: lambergamber
+    date: '2024-09-18'
+    location: Nanjing
+    scenes:
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -91.082436
+          y: -50.215195
+          z: 0.5
+        options: null
+        path:
+        - x: -91.082436
+          y: -50.215195
+          z: 0.5
+        - x: -52.353363
+          y: -13.338162
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: -43.238659
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -41.853363
+          y: -13.344762
+          z: 0.5
+        options: null
+        path:
+        - x: -41.853363
+          y: -13.344762
+          z: 0.5
+        - x: 2.188618
+          y: -60.943428
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 269.963989
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -41.853363
+          y: -13.344762
+          z: 0.5
+        options: null
+        path:
+        - x: -41.853363
+          y: -13.344762
+          z: 0.5
+        - x: 2.132729
+          y: -57.443878
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 269.963989
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: 1.315541
+          y: 13.187634
+          z: 0.5
+        options: null
+        path:
+        - x: 1.315541
+          y: 13.187634
+          z: 0.5
+        - x: -41.73082
+          y: -31.649328
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 180.159195
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -32.123825
+          y: 65.543671
+          z: 0.5
+        options: null
+        path:
+        - x: -32.123825
+          y: 65.543671
+          z: 0.5
+        - x: 1.273863
+          y: 28.187574
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 196.086929
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -95.885857
+          y: 29.156734
+          z: 0.5
+        options: null
+        path:
+        - x: -95.885857
+          y: 29.156734
+          z: 0.5
+        - x: -52.102314
+          y: 72.56501
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: -25.066387
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -52.230522
+          y: -31.728556
+          z: 0.5
+        options: null
+        path:
+        - x: -52.230522
+          y: -31.728556
+          z: 0.5
+        - x: -95.868332
+          y: 11.656296
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 90.43232
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: 1.483071
+          y: 130.220139
+          z: 0.5
+        options: null
+        path:
+        - x: 1.483071
+          y: 130.220139
+          z: 0.5
+        - x: -91.965782
+          y: 114.786629
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 180.361267
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: 1.461003
+          y: 133.720062
+          z: 0.5
+        options: null
+        path:
+        - x: 1.461003
+          y: 133.720062
+          z: 0.5
+        - x: -94.788757
+          y: 116.855644
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 180.361267
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: 1.483071
+          y: 130.220139
+          z: 0.5
+        options: null
+        path:
+        - x: 1.483071
+          y: 130.220139
+          z: 0.5
+        - x: -45.067421
+          y: 84.955269
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 180.361267
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -52.067394
+          y: 84.97496
+          z: 0.5
+        options: null
+        path:
+        - x: -52.067394
+          y: 84.97496
+          z: 0.5
+        - x: -91.965782
+          y: 114.786629
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 89.838768
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -48.567406
+          y: 84.965111
+          z: 0.5
+        options: null
+        path:
+        - x: -48.567406
+          y: 84.965111
+          z: 0.5
+        - x: -94.788757
+          y: 116.855644
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 89.838768
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: 1.483071
+          y: 130.220139
+          z: 0.5
+        options: null
+        path:
+        - x: 1.483071
+          y: 130.220139
+          z: 0.5
+        - x: -41.567432
+          y: 84.945419
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 180.361267
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: 98.114098
+          y: -32.839256
+          z: 0.5
+        options: null
+        path:
+        - x: 98.114098
+          y: -32.839256
+          z: 0.5
+        - x: 53.07534
+          y: 13.331451
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 73.717758
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: 53.268417
+          y: 28.430269
+          z: 0.5
+        options: null
+        path:
+        - x: 53.268417
+          y: 28.430269
+          z: 0.5
+        - x: 102.373894
+          y: 72.164978
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: -7.410312
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: 53.268417
+          y: 28.430269
+          z: 0.5
+        options: null
+        path:
+        - x: 53.268417
+          y: 28.430269
+          z: 0.5
+        - x: 98.873978
+          y: 72.141106
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: -7.410312
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -104.069702
+          y: 73.936821
+          z: 0.5
+        options: null
+        path:
+        - x: -104.069702
+          y: 73.936821
+          z: 0.5
+        - x: -59.200459
+          y: 28.351618
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: -89.357765
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -107.569481
+          y: 73.897591
+          z: 0.5
+        options: null
+        path:
+        - x: -107.569481
+          y: 73.897591
+          z: 0.5
+        - x: -58.676182
+          y: 24.520988
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: -89.357765
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -58.644226
+          y: 13.021034
+          z: 0.5
+        options: null
+        path:
+        - x: -58.644226
+          y: 13.021034
+          z: 0.5
+        - x: -101.889351
+          y: -30.951866
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 180.159195
+      keyframe_time: 0.5
+    - calibrated_sensors:
+        CameraRGBBaseOptions:
+          fstop: '1.8'
+          image_size_x: '1600'
+          image_size_y: '900'
+          sensor_tick: '0.083333'
+          shutter_speed: '50.0'
+        RadarBaseOptions:
+          horizontal_fov: '80'
+          points_per_second: '1500'
+          range: '250'
+          sensor_tick: '0.076923'
+          vertical_fov: '30'
+        sensors:
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0
+            z: 2
+          name: CAM_FRONT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: 0.7
+            z: 2
+          name: CAM_FRONT_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: 1.5
+            y: -0.7
+            z: 2
+          name: CAM_FRONT_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -55
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_LEFT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -110
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -1.5
+            y: 0
+            z: 2
+          name: CAM_BACK
+          options:
+            fov: '110'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.camera.rgb
+          location:
+            x: -0.7
+            y: 0
+            z: 2
+          name: CAM_BACK_RIGHT
+          options:
+            fov: '70'
+            fstop: '1.8'
+            image_size_x: '1600'
+            image_size_y: '900'
+            sensor_tick: '0.083333'
+            shutter_speed: '50.0'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 110
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0
+            z: 0.5
+          name: RADAR_FRONT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_FRONT_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.radar
+          location:
+            x: 1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_FRONT_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: -90
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: 0.7
+            z: 0.5
+          name: RADAR_BACK_RIGHT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.other.radar
+          location:
+            x: -1.5
+            y: -0.7
+            z: 0.5
+          name: RADAR_BACK_LEFT
+          options:
+            horizontal_fov: '80'
+            points_per_second: '1500'
+            range: '250'
+            sensor_tick: '0.076923'
+            vertical_fov: '30'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 180
+        - bp_name: sensor.lidar.ray_cast
+          location:
+            x: 0
+            y: 0
+            z: 2
+          name: LIDAR_TOP
+          options:
+            channels: '32'
+            horizontal_fov: '360'
+            lower_fov: '-30'
+            points_per_second: '1400000'
+            range: '80'
+            rotation_frequency: '100'
+            sensor_tick: '0.05'
+            upper_fov: '10'
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 90
+        - bp_name: sensor.other.gnss
+          location:
+            x: 0
+            y: 0
+            z: 0
+          name: GNSS
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+        - bp_name: sensor.other.imu
+          location:
+            x: -0.7
+            y: 0
+            z: 0
+          name: IMU
+          options: null
+          rotation:
+            pitch: 0
+            roll: 0
+            yaw: 0
+      collect_time: 20
+      count: 1
+      custom: true
+      description: 4090 or babacii?
+      ego_vehicle:
+        bp_name: vehicle.tesla.model3
+        location:
+          x: -58.644226
+          y: 13.021034
+          z: 0.5
+        options: null
+        path:
+        - x: -58.644226
+          y: 13.021034
+          z: 0.5
+        - x: -105.294098
+          y: -31.762856
+          z: 0.5
+        rotation:
+          pitch: 0.0
+          roll: 0.0
+          yaw: 180.159195
+      keyframe_time: 0.5
+    time: 15-30-14
+    timezone: +0800
+  map_category: semantic_prior
+  map_name: Town10HD
+  settings:
+    fixed_delta_seconds: 0.01

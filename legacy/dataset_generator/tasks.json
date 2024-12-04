@@ -1,0 +1,65 @@
+[
+    {
+        "scenario_path": "./scenarios/Scenario1/Town05_Scenario1.json",
+        "time_limit": 99999,
+        "shot_count": 2,
+        "frame_rate": 60,
+        "data_rate": 10,
+        "vehicle_count": 20,
+        "pedestrian_count": 0
+    },
+    {
+        "scenario_path": "./scenarios/Scenario3/Town05_Scenario3.json",
+        "time_limit": 99999,
+        "shot_count": 2,
+        "frame_rate": 60,
+        "data_rate": 10,
+        "vehicle_count": 20,
+        "pedestrian_count": 0
+    },
+    {
+        "scenario_path": "./scenarios/Scenario4/Town05_Scenario4.json",
+        "time_limit": 99999,
+        "shot_count": 2,
+        "frame_rate": 60,
+        "data_rate": 10,
+        "vehicle_count": 20,
+        "pedestrian_count": 0
+    },
+    {
+        "scenario_path": "./scenarios/Scenario7/Town05_Scenario7.json",
+        "time_limit": 99999,
+        "shot_count": 2,
+        "frame_rate": 60,
+        "data_rate": 10,
+        "vehicle_count": 20,
+        "pedestrian_count": 0
+    },
+    {
+        "scenario_path": "./scenarios/Scenario8/Town05_Scenario8.json",
+        "time_limit": 99999,
+        "shot_count": 2,
+        "frame_rate": 60,
+        "data_rate": 10,
+        "vehicle_count": 20,
+        "pedestrian_count": 0
+    },
+    {
+        "scenario_path": "./scenarios/Scenario9/Town05_Scenario9.json",
+        "time_limit": 99999,
+        "shot_count": 2,
+        "frame_rate": 60,
+        "data_rate": 10,
+        "vehicle_count": 20,
+        "pedestrian_count": 0
+    },
+    {
+        "scenario_path": "./scenarios/Scenario10/Town05_Scenario10.json",
+        "time_limit": 99999,
+        "shot_count": 2,
+        "frame_rate": 60,
+        "data_rate": 10,
+        "vehicle_count": 20,
+        "pedestrian_count": 0
+    }
+]

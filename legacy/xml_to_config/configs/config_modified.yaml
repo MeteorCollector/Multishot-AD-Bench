@@ -1,0 +1,87 @@
+dataset:
+  root: "./dataset"
+  version: "v1.16"
+
+client:
+  host: 127.0.0.1
+  port: 2000
+  time_out: 10.0
+
+sensors:
+  !include ./configs/sensors.yaml
+
+categories:
+  !include ./configs/categories.yaml
+
+attributes:
+  !include ./configs/attributes.yaml
+
+visibility:
+  !include ./configs/visibility.yaml 
+
+scene_count: 5
+
+worlds:  #map
+  -
+    map_name: "Town05_Opt"
+    map_category: "semantic_prior"
+    settings:
+      fixed_delta_seconds: 0.01
+    captures: #log
+      - 
+        date: "2023-04-19"
+        time: "00-59-20"
+        timezone: "+0800"
+        capture_vehicle: "c0003"
+        location: "Nanjing"
+        scenes:
+          - 
+            count: 1
+            custom: False
+            collect_time: 30
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Squared-grid town with cross junctions and a bridge. It has multiple lanes per direction. Useful to perform lane changes."
+          - 
+            count: 1
+            custom: False
+            collect_time: 30
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Squared-grid town with cross junctions and a bridge. It has multiple lanes per direction. Useful to perform lane changes."
+          - 
+            count: 1
+            custom: False
+            collect_time: 30
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Squared-grid town with cross junctions and a bridge. It has multiple lanes per direction. Useful to perform lane changes."
+          - 
+            count: 1
+            custom: False
+            collect_time: 30
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Squared-grid town with cross junctions and a bridge. It has multiple lanes per direction. Useful to perform lane changes."
+          - 
+            count: 1
+            custom: False
+            collect_time: 30
+            keyframe_time: 0.5
+            ego_bp_name: "vehicle.tesla.model3"
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "Squared-grid town with cross junctions and a bridge. It has multiple lanes per direction. Useful to perform lane changes."

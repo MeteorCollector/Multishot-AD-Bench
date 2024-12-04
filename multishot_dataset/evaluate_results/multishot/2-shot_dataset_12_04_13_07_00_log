@@ -1,0 +1,26 @@
+Results writes to test/multishot_e2e/Wed_Dec__4_13_42_10_2024/results_nusc.json
+mAP: 0.0430
+mATE: 0.8747
+mASE: 0.6958
+mAOE: 0.6592
+mAVE: 0.8585
+NDS: 0.1252
+
+Per-class results:
+Object Class	AP	ATE	ASE	AOE	AVE
+car	0.119	0.539	0.111	0.042	1.829
+van	0.000	1.000	1.000	1.000	1.000
+truck	0.000	1.000	1.000	1.000	1.000
+bicycle	0.000	1.000	1.000	1.000	1.000
+traffic_sign	0.191	0.706	0.068	0.136	0.022
+traffic_cone	0.000	1.000	1.000	1.000	1.000
+traffic_light	0.034	0.752	0.387	0.096	0.018
+pedestrian	0.000	1.000	1.000	1.000	1.000
++-------------+--------+---------+---------+---------+---------+---------+
+|   metrics   |  0.5s  |   1.0s  |   1.5s  |   2.0s  |   2.5s  |   3.0s  |
++-------------+--------+---------+---------+---------+---------+---------+
+|   obj_col   | 0.0000 |  0.0004 |  0.0028 |  0.0236 |  0.1924 |  0.2512 |
+| obj_box_col | 0.0016 |  0.0036 |  0.0240 |  0.1652 |  0.2860 |  0.3356 |
+|      L2     | 6.8096 | 13.3290 | 18.9665 | 23.7295 | 27.8244 | 31.3221 |
++-------------+--------+---------+---------+---------+---------+---------+
+{'bbox_NuScenes/car_AP_dist_0.5': 0.0329, 'bbox_NuScenes/car_AP_dist_1.0': 0.0807, 'bbox_NuScenes/car_AP_dist_2.0': 0.1431, 'bbox_NuScenes/car_AP_dist_4.0': 0.2182, 'bbox_NuScenes/car_trans_err': 0.5394, 'bbox_NuScenes/car_scale_err': 0.1111, 'bbox_NuScenes/car_orient_err': 0.0425, 'bbox_NuScenes/car_vel_err': 1.8286, 'bbox_NuScenes/mATE': 0.8747, 'bbox_NuScenes/mASE': 0.6958, 'bbox_NuScenes/mAOE': 0.6592, 'bbox_NuScenes/mAVE': 0.8585, 'bbox_NuScenes/van_AP_dist_0.5': 0.0, 'bbox_NuScenes/van_AP_dist_1.0': 0.0, 'bbox_NuScenes/van_AP_dist_2.0': 0.0, 'bbox_NuScenes/van_AP_dist_4.0': 0.0, 'bbox_NuScenes/van_trans_err': 1.0, 'bbox_NuScenes/van_scale_err': 1.0, 'bbox_NuScenes/van_orient_err': 1.0, 'bbox_NuScenes/van_vel_err': 1.0, 'bbox_NuScenes/truck_AP_dist_0.5': 0.0, 'bbox_NuScenes/truck_AP_dist_1.0': 0.0, 'bbox_NuScenes/truck_AP_dist_2.0': 0.0, 'bbox_NuScenes/truck_AP_dist_4.0': 0.0, 'bbox_NuScenes/truck_trans_err': 1.0, 'bbox_NuScenes/truck_scale_err': 1.0, 'bbox_NuScenes/truck_orient_err': 1.0, 'bbox_NuScenes/truck_vel_err': 1.0, 'bbox_NuScenes/bicycle_AP_dist_0.5': 0.0, 'bbox_NuScenes/bicycle_AP_dist_1.0': 0.0, 'bbox_NuScenes/bicycle_AP_dist_2.0': 0.0, 'bbox_NuScenes/bicycle_AP_dist_4.0': 0.0, 'bbox_NuScenes/bicycle_trans_err': 1.0, 'bbox_NuScenes/bicycle_scale_err': 1.0, 'bbox_NuScenes/bicycle_orient_err': 1.0, 'bbox_NuScenes/bicycle_vel_err': 1.0, 'bbox_NuScenes/traffic_sign_AP_dist_0.5': 0.0211, 'bbox_NuScenes/traffic_sign_AP_dist_1.0': 0.1482, 'bbox_NuScenes/traffic_sign_AP_dist_2.0': 0.2698, 'bbox_NuScenes/traffic_sign_AP_dist_4.0': 0.3237, 'bbox_NuScenes/traffic_sign_trans_err': 0.7062, 'bbox_NuScenes/traffic_sign_scale_err': 0.0681, 'bbox_NuScenes/traffic_sign_orient_err': 0.1355, 'bbox_NuScenes/traffic_sign_vel_err': 0.0216, 'bbox_NuScenes/traffic_cone_AP_dist_0.5': 0.0, 'bbox_NuScenes/traffic_cone_AP_dist_1.0': 0.0, 'bbox_NuScenes/traffic_cone_AP_dist_2.0': 0.0, 'bbox_NuScenes/traffic_cone_AP_dist_4.0': 0.0, 'bbox_NuScenes/traffic_cone_trans_err': 1.0, 'bbox_NuScenes/traffic_cone_scale_err': 1.0, 'bbox_NuScenes/traffic_cone_orient_err': 1.0, 'bbox_NuScenes/traffic_cone_vel_err': 1.0, 'bbox_NuScenes/traffic_light_AP_dist_0.5': 0.0003, 'bbox_NuScenes/traffic_light_AP_dist_1.0': 0.01, 'bbox_NuScenes/traffic_light_AP_dist_2.0': 0.0427, 'bbox_NuScenes/traffic_light_AP_dist_4.0': 0.0843, 'bbox_NuScenes/traffic_light_trans_err': 0.7518, 'bbox_NuScenes/traffic_light_scale_err': 0.3874, 'bbox_NuScenes/traffic_light_orient_err': 0.0957, 'bbox_NuScenes/traffic_light_vel_err': 0.0176, 'bbox_NuScenes/pedestrian_AP_dist_0.5': 0.0, 'bbox_NuScenes/pedestrian_AP_dist_1.0': 0.0, 'bbox_NuScenes/pedestrian_AP_dist_2.0': 0.0, 'bbox_NuScenes/pedestrian_AP_dist_4.0': 0.0, 'bbox_NuScenes/pedestrian_trans_err': 1.0, 'bbox_NuScenes/pedestrian_scale_err': 1.0, 'bbox_NuScenes/pedestrian_orient_err': 1.0, 'bbox_NuScenes/pedestrian_vel_err': 1.0, 'bbox_NuScenes/NDS': 0.12518683659218172, 'bbox_NuScenes/mAP': 0.04297377449459796}

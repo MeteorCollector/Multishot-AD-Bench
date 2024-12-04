@@ -1,0 +1,60 @@
+dataset:
+  root: "./dataset"
+  version: "v1.14"
+
+client:
+  host: 127.0.0.1
+  port: 2000
+  time_out: 10.0
+
+sensors:
+  !include ./configs/sensors.yaml
+
+categories:
+  !include ./configs/categories.yaml
+
+attributes:
+  !include ./configs/attributes.yaml
+
+visibility:
+  !include ./configs/visibility.yaml 
+
+worlds:  #map
+  - 
+    map_name: "Town03"
+    map_category: "semantic_prior"
+    settings:
+      fixed_delta_seconds: 0.01
+    captures: #log
+      - 
+        date: "2024-04-22"
+        time: "20-00-20"
+        timezone: "+0800"
+        capture_vehicle: "lambergamber"
+        location: "Nanjing"
+        scenes:
+          - 
+            count: 1
+            custom: True
+            collect_time: 20
+            keyframe_time: 0.5
+            ego_vehicle:
+              bp_name: "vehicle.tesla.model3"
+              location: 
+                x: 41.454655
+                y: -192.961319
+                z: 0.5
+              rotation: 
+                yaw: 1.439560
+                pitch: 0.0
+                roll: 0.0
+              options: ~
+              path: 
+                - 
+                  x: 41.454655
+                  y: -192.961319
+                  z: 0.5
+            calibrated_sensors:
+              !include ./configs/calibrated_sensors.yaml
+            description:
+              "4090 or babacii?"
