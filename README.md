@@ -10,6 +10,8 @@
 
 3. 使用 Bench2Drive 架构的训练/测试脚本，给出了 UniAD 的 evaluate 例子。
 
+数据集下载请移步 [huggingface](https://huggingface.co/datasets/Telkwevr/Multishot-AD-Bench/tree/main)
+
 ## 数据采集 Data Collection
 
 Generate dataset in nuscenes ([Bench2Drive](https://github.com/Thinklab-SJTU/Bench2Drive) version) format using Carla! You can config your dataset in configs.
@@ -74,7 +76,7 @@ Currently we don't have a `requirements.txt` to manage dependencies, please help
 
 ### 使用 pdm-lite 进行采集 Use pdm-lite to Collect Data
 
-在 pdm-lite 脚本之前，我们还实现过几个数据采集脚本，在 `legacy/daatset_generator` 文件夹下可以找到。但是非常不建议运行。旧脚本的文档位于[这里](data_generator_legacy.md)。
+在 pdm-lite 脚本之前，我们还实现过几个数据采集脚本，在 `legacy/dataset_generator` 文件夹下可以找到。但是非常不建议运行。旧脚本的文档位于[这里](data_generator_legacy.md)。
 
 我们使用 pdm-lite 这个 rule-based 的 sota agent 进行数据采集，和 DriveLM 使用同款。pdm-lite 的仓库位于 [这里](https://github.com/OpenDriveLab/DriveLM/tree/DriveLM-CARLA/pdm_lite)。
 
@@ -121,7 +123,7 @@ cd ./benchmark/Bench2DriveZoo
 
 ### 数据准备 Data Preparation
 
-从我们的 release 处下载数据集，确保结构如此：
+从我们的 [huggingface](https://huggingface.co/datasets/Telkwevr/Multishot-AD-Bench/tree/main) 仓库下载数据集，确保结构如此：
 
 Download our dataset from releases and make sure the structure of data as follows:
 
@@ -147,7 +149,7 @@ Download our dataset from releases and make sure the structure of data as follow
 
 ```
 
-`multishot/v1` 文件夹下的 `1-shot` `2-shot` `3-shot` 等数据集本身文件、`maps/` 文件夹下的地图文件请从 release 处下载。
+`multishot/v1` 文件夹下的 `1-shot` `2-shot` `3-shot` 等数据集本身文件、`maps/` 文件夹下的地图文件请从 [huggingface](https://huggingface.co/datasets/Telkwevr/Multishot-AD-Bench/tree/main) 处下载。
 
 ### 生成 Data Info Prepare Data Info
 
