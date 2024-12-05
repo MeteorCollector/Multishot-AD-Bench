@@ -12,6 +12,8 @@
 
 数据集下载请移步 [huggingface](https://huggingface.co/datasets/Telkwevr/Multishot-AD-Bench/tree/main)
 
+数据集结构细节请查阅 [anno.md](anno.md)
+
 ## 数据采集 Data Collection
 
 Generate dataset in nuscenes ([Bench2Drive](https://github.com/Thinklab-SJTU/Bench2Drive) version) format using Carla! You can config your dataset in configs.

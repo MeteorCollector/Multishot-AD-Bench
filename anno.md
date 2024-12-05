@@ -132,12 +132,12 @@ Currently we don't have visualize script in our repo, please refer to Bench2Driv
     - reverse
     - theta
     - speed
-    - x_command_far # farther waypoint x in world coordinates.
-    - y_command_far # farther waypoint y in world coordinates.
-    - command_far #  the command to farther waypoint.
-    - x_command_near # nearby waypoint x in world coordinates.
-    - y_command_near # nearby waypoint y in world coordinates.
-    - command_near # the command to nearby waypoint.
+    # - x_command_far # farther waypoint x in world coordinates. Moved to measurements (see below)
+    # - y_command_far # farther waypoint y in world coordinates. Moved to measurements (see below)
+    # - command_far #  the command to farther waypoint. Moved to measurements (see below)
+    # - x_command_near # nearby waypoint x in world coordinates. Moved to measurements (see below)
+    # - y_command_near # nearby waypoint y in world coordinates. Moved to measurements (see below)
+    # - command_near # the command to nearby waypoint. Moved to measurements (see below)
     # - should_brake # inherit from TCP # we don't have this
     # - only_ap_brake # inherit from TCP # we don't have this
     - x_target # target waypoint 
@@ -276,6 +276,51 @@ Currently we don't have visualize script in our repo, please refer to Bench2Driv
             - section_id # Section of the road where the pedestrian is located
             - world2ped # Transformation from world coordinates to pedestrian coordinates
 ```
+
+## Measurements Data Structure
+
+这些数据是继承自 pdm-lite 的，主要是自车的信息。
+
+These data are inherited from pdm-lite
+
+```shell
+    - pos_global # location in global cord
+    - theta
+    - speed
+    - target_speed # a target speed pdm-lite set to ego vehicle
+    - speed_limit # the speed limit of current route
+    - target_point # command_near's location, [x, y]
+    - target_point_next # command_far's location, [x, y]
+    - command # command_near
+    - next_command # command_far
+    - aim_wp # the waypoint ego_vehicle is going to
+    - route # a list of waypoint cords, the route pdm_lite calculated for ego vehicle
+    - route_original # a list of waypoint cords, last route pdm_lite calculated
+    - changed_route # bool, did ego vehicle selected a new route
+    - speed_reduced_by_obj_type # the type of the object which slows wdo vehicle down
+    - speed_reduced_by_obj_id # the carla id of the object which slows wdo vehicle down
+    - speed_reduced_by_obj_distance # the distance of the object which slows wdo vehicle down
+    - steer
+    - throttle
+    - brake
+    - control_brake # flag indicates that agent wants to brake 
+    - junction # flag indicates wether vehicle is in junction
+    - vehicle_hazard # flag indicates vehicle hazard
+    - vehicle_affecting_id # carla id of hazard vehicle
+    - light_hazard # flag indicates light hazard
+    - walker_hazard # flag indicates walker hazard
+    - walker_affecting_id # carla id of hazard walker
+    - stop_sign_hazard # flag indicates stop sign hazard
+    - stop_sign_close # flag indicates whether stop sign is close
+    - walker_close # flag indicates whether walker is close 
+    - walker_close_id # carla id of close walker
+    - angle # used for data augmentation, not used in dataset
+    - augmentation_translation  # used for data augmentation, not used in dataset
+    - augmentation_rotation # used for data augmentation, not used in dataset
+    - ego_matrix
+```
+
+
 ## HD-Map Data Structure
 ``` shell
   # Each HD-Map file contains road information of a certain town
