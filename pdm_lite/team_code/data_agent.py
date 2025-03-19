@@ -1401,7 +1401,26 @@ class DataAgent(AutoPilot):
         cam_gray_back_right_depth = convert_depth(cam_bgr_back_right_depth)
         
         # weather
-        weather = self.weather_name
+        weather_name = self.weather_name
+
+        weather = self._world.get_weather()
+        weather_info = {
+            'class': 'weather',
+            'cloudiness': weather.cloudiness,
+            'dust_storm': weather.dust_storm,
+            'fog_density': weather.fog_density,
+            'fog_distance': weather.fog_distance,
+            'fog_falloff': weather.fog_falloff,
+            'mie_scattering_scale': weather.mie_scattering_scale,
+            'precipitation': weather.precipitation,
+            'precipitation_deposits': weather.precipitation_deposits,
+            'rayleigh_scattering_scale': weather.rayleigh_scattering_scale,
+            'scattering_intensity': weather.scattering_intensity,
+            'sun_altitude_angle': weather.sun_altitude_angle,
+            'sun_azimuth_angle': weather.sun_azimuth_angle,
+            'wetness': weather.wetness,
+            'wind_intensity': weather.wind_intensity,
+        }
 
         self.cam_bgr_mapping = {
             'CAM_FRONT': 'cam_bgr_front',
@@ -1513,16 +1532,17 @@ class DataAgent(AutoPilot):
                 'radar_back_left': radar_back_left,
                 'radar_back_right': radar_back_right,
                 # lidar
-                'lidar' : lidar_360,
+                'lidar': lidar_360,
                 'lidar_seg': lidar_seg,
                 # other
                 'pos': self._vehicle.get_location(),
                 'gps': gps,
                 'speed': speed,
                 'compass': compass,
-                'weather': weather,
-                "acceleration":acceleration,
-                "angular_velocity":angular_velocity,
+                'weather_name': weather_name,
+                'weather': weather_info,
+                "acceleration": acceleration,
+                "angular_velocity": angular_velocity,
                 'bounding_boxes': bounding_boxes,
                 'sensors_anno': sensors_anno,
                 'throttle': control.throttle,
@@ -2100,8 +2120,9 @@ class DataAgent(AutoPilot):
                 # 'target_command': tick_data['target_command'].tolist(),
                 # 'target_gps': tick_data['target_gps'].tolist(),
                 # 'next_command': tick_data['next_command'],
+                'weather_name': tick_data['weather_name'],
                 'weather': tick_data['weather'],
-                "acceleration":tick_data["acceleration"].tolist(),
+                "acceleration": tick_data["acceleration"].tolist(),
                 "angular_velocity":tick_data["angular_velocity"].tolist(),
                 'bounding_boxes': tick_data['bounding_boxes'],
                 'sensors': tick_data['sensors_anno'],

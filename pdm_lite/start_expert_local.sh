@@ -35,7 +35,8 @@ export REPETITIONS=1
 export DEBUG_CHALLENGE=0
 
 # export PTH_ROUTE=${WORK_DIR}/data/routes_devtest
-export PTH_ROUTE=${WORK_DIR}/xml_routes/old_towns/s1/Town04_Scenario1
+# export PTH_ROUTE=${WORK_DIR}/xml_routes/old_towns/s1/Town04_Scenario1
+export PTH_ROUTE=${WORK_DIR}/Bench2Drive_xml/data/bench2drive220
 
 # Function to handle errors
 handle_error() {
